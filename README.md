@@ -10,7 +10,7 @@
 
 ```javascript
 //获取缓存
-var mycache=cache('name');
+var mycache=cache('name').get();
 
 //使用方法
 cache('name','tag','expires').set('your data');
