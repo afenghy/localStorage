@@ -31,4 +31,11 @@ cache().tag('youtag').clear();
 cache().clear();
 ```
 
-
+#对象方式
+以新对象方式可以提前设置好tag及过期时间
+```javascript
+//以下设置的缓存tag和过期时间相同
+var cacheobj=new cache().tag('mytag').days(5);
+cacheobj.set('names1','value1');
+cacheobj.set('names2','value2');
+```
