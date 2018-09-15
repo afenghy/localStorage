@@ -10,7 +10,6 @@
 	function init(name,tags,days){
 		var expires = parseInt(timestr)+(daytime*days);
 		var nameArr = {};
-		var tagsArr = {};
 		var that = this;
 
 		this.name=name;
@@ -42,16 +41,27 @@
 		set:function(value){
 			this.remove(this.name);
 			var rename='{cache:'+this.name+';exp:'+this.exp+';'+(this.tags?'tag:'+this.tags+';':'')+'}';
+			var value=JSON.stringify(value);
 			localStorage.setItem(rename,value);
-				console.log('delete:',rename);
 			return this;
+		},
+		//获取缓存
+		get:function(name){
+			name=name||this.name;
+			var value='';
+			if(name && this.keys && this.keys[name]){
+				value=localStorage.getItem(this.keys[name]['key']);
+				if(/^\{(.+)\}$/.test(value)){
+					value=JSON.parse(value);
+				}
+			}
+			return value;
 		},
 		//删除单条
 		remove:function(nms){
 			var nms=nms||this.name;
 			if(this.keys && this.keys[nms]){
 				localStorage.removeItem(this.keys[nms]['key']);
-				console.log('delete:',this.keys[nms]['key']);
 			}
 			return this;
 		},
