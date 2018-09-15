@@ -9,14 +9,18 @@
 ```javascript
 //使用方法
 cache('name','tag','expires').set('your data');
+
 //链试写法
 cache('name').tag('youtag').days('expires').set('your data');
+
 //删除缓存
 cache('name').remove();
 cache().remove('name');
+
 //删除同Tag缓存
 cache().clear('youtag');
 cache().tag('youtag').clear();
+
 //清除全部由cache写入的缓存
 cache().clear();
 ```
