@@ -38,7 +38,13 @@
 			return this;
 		},
 		//设置值
-		set:function(value){
+		set:function(name,value){
+			if(value == undefined){
+				value = name;
+				name = undefined;
+			}else if(name){
+				this.name=name;
+			}
 			this.remove(this.name);
 			var rename='{cache:'+this.name+';exp:'+this.exp+';'+(this.tags?'tag:'+this.tags+';':'')+'}';
 			var value=JSON.stringify(value);
