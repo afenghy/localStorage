@@ -57,7 +57,7 @@
 			var value='';
 			if(name && this.keys && this.keys[name]){
 				value=localStorage.getItem(this.keys[name]['key']);
-				if(/^\{(.+)\}$/.test(value)){
+				if(/(^\{(.+)\}$)||(^\[(.+)\]$)/.test(value)){
 					value=JSON.parse(value);
 				}
 			}
